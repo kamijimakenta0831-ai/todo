@@ -1,0 +1,9 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ブラウザだけで動くシンプルな TODO アプリ",
+  "scripts": {
+    "test": "node --test"
+  }
+}

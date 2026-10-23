@@ -1,0 +1,481 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f3f1;
+  --surface: #ffffff;
+  --surface-2: #f0eeeb;
+  --border: #e1ded9;
+  --text: #1d1c1a;
+  --text-muted: #6d6964;
+  --accent: #2f66d0;
+  --accent-text: #ffffff;
+  --danger: #c0392b;
+  --high: #c0392b;
+  --medium: #b06a00;
+  --low: #3f7d8c;
+  --focus: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+  --radius: 12px;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 6px 20px rgb(0 0 0 / 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161615;
+    --surface: #201f1e;
+    --surface-2: #2a2927;
+    --border: #353331;
+    --text: #ecebe8;
+    --text-muted: #a19d97;
+    --accent: #6d9cf2;
+    --accent-text: #0f1a2e;
+    --danger: #ef7466;
+    --high: #ef7466;
+    --medium: #e3a547;
+    --low: #6fb3c4;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 16px 64px;
+}
+
+/* ---- ヘッダー ---- */
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+}
+
+.summary {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- 共通パーツ ---- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+input[type="text"],
+input[type="search"],
+input[type="date"],
+select {
+  min-height: 36px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus);
+}
+
+.button {
+  min-height: 36px;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.button.primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, black);
+}
+
+.button.subtle {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+
+.button.subtle:hover:not(:disabled) {
+  color: var(--text);
+}
+
+/* ---- 追加フォーム ---- */
+
+.new-form {
+  padding: 12px;
+}
+
+.new-form .new-title {
+  width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+  border-color: transparent;
+  background: var(--surface-2);
+}
+
+.new-form .new-title:focus-visible {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.new-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 10px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.field input,
+.field select {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.new-options .button.primary {
+  margin-left: auto;
+}
+
+/* ---- ツールバー ---- */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 20px 0 10px;
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--surface-2);
+  border-radius: 10px;
+}
+
+.segmented button {
+  padding: 5px 14px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+}
+
+.search {
+  width: 160px;
+}
+
+/* ---- 一覧 ---- */
+
+.todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 12px 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.todo-item:first-child {
+  border-top: 0;
+}
+
+.todo-toggle {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.todo-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-title {
+  display: block;
+  overflow-wrap: anywhere;
+  cursor: text;
+}
+
+.is-done .todo-title {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.todo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.badge {
+  padding: 0 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.badge-high {
+  color: var(--high);
+  background: color-mix(in srgb, var(--high) 13%, transparent);
+}
+
+.badge-medium {
+  color: var(--medium);
+  background: color-mix(in srgb, var(--medium) 13%, transparent);
+}
+
+.badge-low {
+  color: var(--low);
+  background: color-mix(in srgb, var(--low) 13%, transparent);
+}
+
+.is-done .badge {
+  opacity: 0.55;
+}
+
+.todo-due {
+  line-height: 20px;
+}
+
+.is-overdue .todo-due {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.todo-actions {
+  display: flex;
+  flex: none;
+  gap: 2px;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.icon-button.danger:hover {
+  color: var(--danger);
+}
+
+.icon-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* マウス操作の環境では、ボタンはホバー/フォーカス時だけ表示する */
+@media (hover: hover) {
+  .todo-actions {
+    opacity: 0;
+    transition: opacity 0.12s;
+  }
+
+  .todo-item:hover .todo-actions,
+  .todo-item:focus-within .todo-actions {
+    opacity: 1;
+  }
+}
+
+/* ---- 編集 ---- */
+
+.is-editing {
+  background: var(--surface-2);
+}
+
+.edit-form {
+  flex: 1;
+  min-width: 0;
+}
+
+.edit-title {
+  width: 100%;
+}
+
+.edit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-row .spacer {
+  flex: 1;
+}
+
+/* ---- 空表示・フッター ---- */
+
+.empty {
+  margin: 0;
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.list-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+.toggle-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toggle-all input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.list-footer .button {
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding-top: 24px;
+  }
+
+  .toolbar-right {
+    width: 100%;
+  }
+
+  .search {
+    flex: 1;
+    width: auto;
+  }
+}

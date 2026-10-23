@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TODO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>TODO</h1>
+      <p id="summary" class="summary" aria-live="polite"></p>
+    </header>
+
+    <form id="new-form" class="card new-form" autocomplete="off">
+      <label class="visually-hidden" for="new-title">新しいタスク</label>
+      <input id="new-title" class="new-title" type="text" maxlength="200"
+             placeholder="やることを入力して Enter" required autofocus>
+      <div class="new-options">
+        <label class="field">
+          <span>期限</span>
+          <input id="new-due" type="date">
+        </label>
+        <label class="field">
+          <span>優先度</span>
+          <select id="new-priority">
+            <option value="high">高</option>
+            <option value="medium" selected>中</option>
+            <option value="low">低</option>
+          </select>
+        </label>
+        <button type="submit" class="button primary">追加</button>
+      </div>
+    </form>
+
+    <div class="toolbar">
+      <div id="filters" class="segmented" role="group" aria-label="表示するタスク">
+        <button type="button" data-filter="all">すべて</button>
+        <button type="button" data-filter="active">未完了</button>
+        <button type="button" data-filter="completed">完了済み</button>
+      </div>
+      <div class="toolbar-right">
+        <label class="visually-hidden" for="search">検索</label>
+        <input id="search" class="search" type="search" placeholder="検索">
+        <label class="visually-hidden" for="sort">並べ替え</label>
+        <select id="sort">
+          <option value="created">追加順</option>
+          <option value="due">期限順</option>
+          <option value="priority">優先度順</option>
+        </select>
+      </div>
+    </div>
+
+    <ul id="list" class="card todo-list" aria-label="タスク一覧"></ul>
+    <p id="empty" class="empty" hidden></p>
+
+    <footer id="list-footer" class="list-footer" hidden>
+      <label class="toggle-all">
+        <input id="toggle-all" type="checkbox">
+        <span>すべて完了にする</span>
+      </label>
+      <button id="clear-completed" type="button" class="button subtle">完了済みを削除</button>
+    </footer>
+  </main>
+
+  <script src="todo-core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
